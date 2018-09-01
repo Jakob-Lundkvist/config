@@ -14,7 +14,7 @@ ZSH_THEME="bira"
 # cause zsh load theme from this variable instead of
 # looking in ~/.oh-my-zsh/themes/
 # An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# ZSH_THEME_RANDOM_CANDIDATES=(' "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -106,5 +106,8 @@ alias inst='sudo pacman -S'
 alias uninst='sudo pacman -R'
 alias pconf='vim ~/.config/polybar/config'
 alias dconf='vim ~/.config/dunst/dunstrc'
-
-
+alias csl='clear'
+alias vconf='vim ~/.vimrc'
+alias zconf='vim ~/.zshrc'
+alias batt='upower -i /org/freedesktop/UPower/devices/battery_BAT1'
+alias kernel='mhwd-kernel -li'

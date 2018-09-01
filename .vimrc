@@ -1,5 +1,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+let g:AutoPairsShortcutFastWrap=''
+set encoding=utf-8
 set number 
 syntax on
 " set the runtime path to include Vundle and initialize
@@ -10,10 +12,13 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'morhetz/gruvbox'
+Plugin 'sbdchd/neoformat'
 Plugin 'majutsushi/tagbar'
+Plugin 'honza/vim-snippets'
 Plugin 'valloric/youcompleteme'
 Plugin 'ervandew/supertab'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'sirver/ultisnips'
 Plugin 'scrooloose/syntastic'
 Plugin 'powerline/powerline'
 Plugin 'scrooloose/nerdtree'
@@ -57,3 +62,9 @@ nohlsearch
  map <F8> : !gcc % && ./a.out <CR>
 let g:ycm_python_binary_path = '/usr/bin/python3'
 nmap <C-m> :TagbarToggle<CR>
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<C-c>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
