@@ -1,70 +1,64 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-let g:AutoPairsShortcutFastWrap=''
-set encoding=utf-8
-set number 
-syntax on
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+set nu
+set cc=80
+filetype indent on
+set smartindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
+syntax on 
+call plug#begin()
+Plug 'w0rp/ale'
+Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'majutsushi/tagbar'
+""Plug 'valloric/youcompleteme'
+   Plug 'autozimu/LanguageClient-neovim', {
+          \ 'branch': 'next',
+         \ 'do': 'bash install.sh',
+          \ }
+""Plug 'zchee/deoplete-clang'
+Plug 'shougo/deoplete.nvim'
+Plug 'tpope/vim-surround'
+Plug 'lervag/vimtex'
+Plug 'scrooloose/nerdtree'
+Plug 'itchyny/lightline.vim'
+Plug 'morhetz/gruvbox'
+call plug#end()
 
-" let Vundle manage Vundle, required
-Plugin 'morhetz/gruvbox'
-Plugin 'sbdchd/neoformat'
-Plugin 'majutsushi/tagbar'
-Plugin 'honza/vim-snippets'
-Plugin 'valloric/youcompleteme'
-Plugin 'ervandew/supertab'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'sirver/ultisnips'
-Plugin 'scrooloose/syntastic'
-Plugin 'powerline/powerline'
-Plugin 'scrooloose/nerdtree'
-Plugin 'w0rp/ale'
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_autoclose_preview_window_after_completion = 1
-set  rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
-set laststatus=2
-set t_Co=256
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
 colorscheme gruvbox
-
-map <C-n> :NERDTreeToggle<CR>
-inoremap <jj> <Esc> 
-set hls is
-nohlsearch
- map <F8> : !gcc % && ./a.out <CR>
-let g:ycm_python_binary_path = '/usr/bin/python3'
 nmap <C-m> :TagbarToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
+set laststatus=2
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<C-c>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+inoremap " ""<left>
+inoremap < < ><left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+let g:ale_lint_on_enter = 1
+let b:ale_linters = ['clang']
+map <F9> :make all
+map <F10> :term
 
+""let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/youcompleteme/.ycm_extra_conf.py'
+
+""let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+""let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
+""let g:deoplete#sources#clang#flags = ['-x', 'c', '-std=c99', '-I ~/Skola/DOA/codedb/include']
+
+autocmd CompleteDone * pclose!
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#enable_at_startup = 1
+let g:LanguageClient_serverCommands = {
+       \ 'c': ['/usr/bin/clangd'],
+       \ }
+
+let g:tex_flavor = 'latex'

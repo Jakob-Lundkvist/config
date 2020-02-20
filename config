@@ -8,13 +8,13 @@
 [colors]
 ;background = ${xrdb:color0:#222}
 ;background = #212E36
-background = #cf172a47
+background = #262626
 ;it's ARGB so "cfl" is for transparency
-background-alt = #cf172a47
-background-unf = #cf172a47
+background-alt = #262626
+background-unf = #262626
 background-mod0 = #cf3C5A46
 background-mod1 = #cf546E53
-background-mod2 = #cf172a47
+background-mod2 = #262626
 background-alrt = #cfA1BB76
 
 ;foreground = ${xrdb:color7:#222}
@@ -60,13 +60,13 @@ font-2 = sm4tik:pixelsize=10;1
 
 modules-left = i3 
 modules-center =  date 
-modules-right =    tray wireless-network volume battery powermenu
+modules-right =   wireless-network volume battery powermenu
 
 tray-position = right
 tray-padding = 11
 tray-transparent = false
-tray-offset-y = 19
-tray-offset-x = -170
+tray-offset-y = 0
+tray-offset-x = -200
 tray-maxsize = 20
 tray-detached = true
 tray-background = #32404a
@@ -141,7 +141,8 @@ label-mode-background = #e60053
 ; Default: %icon%  %name%
 label-focused = %name%
 label-focused-foreground = $(colors.foreground-alt)
-label-focused-background = #515d70
+label-focused-background = #595959
+;label-focused-background = #515d70
 label-focused-underline = #fba922
 label-focused-padding = 4
 
@@ -225,7 +226,7 @@ interval = 1
 date = 
 date-alt = " %Y-%m-%d"
 
-time = "   %a %b %d     %H %M  "
+time = "   %a %b %d     %H:%M  "
 time-alt = %H:%M:%S
 
 format-prefix-foreground = ${colors.foreground-alt}
@@ -324,7 +325,7 @@ type = custom/menu
 format-spacing = 1
 
 label-open = "      "
-label-open-background = #cf172a47
+label-open-background = #262626
 label-open-foreground = $(colors.forground-alt)
 label-close = "    cancel   "
 label-close-background = #cf172a47

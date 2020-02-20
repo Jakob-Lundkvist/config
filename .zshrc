@@ -76,9 +76,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+#   export EDITOR='nvim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='mnvim'
 # fi
 
 # Compilation flags
@@ -95,19 +95,44 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Misc alias
 alias cls='clear'
+alias csl='clear'
 alias md='mkdir'
-alias rd='rmdir'
-alias conf='vim ~/.config/i3/config'
-alias wifilund='nmcli device wifi connect Lundkvist password lansmansvagen'
-alias wifiinam='nmcli device wifi connect inam password furugrand'
+alias rd='rm -R'
+alias rdf='rm -Rf'
+alias sl='ls'
+alias batt='upower -i /org/freedesktop/UPower/devices/battery_BAT1'
+alias please='sudo $(fc -ln -1)'
+alias sdown='shutdown now'
+
+# Screen alias
+alias detcree='xrandr --auto'
+alias screer='xrandr --output HDMI1 --auto --right-of eDP1'
+alias screel='xrandr --output HDMI1 --auto --left-of eDP1'
+
+# Pacman alias
 alias upd='sudo pacman -Syu'
 alias inst='sudo pacman -S'
-alias uninst='sudo pacman -R'
-alias pconf='vim ~/.config/polybar/config'
-alias dconf='vim ~/.config/dunst/dunstrc'
-alias csl='clear'
-alias vconf='vim ~/.vimrc'
-alias zconf='vim ~/.zshrc'
-alias batt='upower -i /org/freedesktop/UPower/devices/battery_BAT1'
-alias kernel='mhwd-kernel -li'
+alias isnt='sudo pacman -S'
+alias uninst='sudo pacman -Rsn'
+alias delunu='sudo pacman -Rns $(pacman -Qtdq)'
+
+# Conf alias
+alias conf='nvim ~/.config/i3/config'
+alias pconf='nvim ~/.config/polybar/config'
+alias dconf='nvim ~/.config/dunst/dunstrc'
+alias zconf='nvim ~/.zshrc'
+alias vconf='nvim ~/.nvimrc'
+alias nconf='nvim ~/.config/nnvim/init.nvim'
+
+#Wifi alias 
+alias wifiumu='nmcli device wifi connect UmU\ wlan'
+alias wifilund='nmcli device wifi connect Lundkvist password lansmansvagen'
+alias wifiinam='nmcli device wifi connect inam password furugrand'
+alias wifiedu='nmcli device wifi connect eduroam'
+alias wifihome='nmcli device wifi connect Atsiken-5G password Kuratorvagen1107'
+alias listaddr='nmap 192.168.0.1/24'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
