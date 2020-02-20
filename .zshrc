@@ -1,5 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+#
+
+export EDITOR='nvim'
 
 # Path to your oh-my-zsh installation.
   export ZSH="/home/jakob/.oh-my-zsh"
@@ -74,18 +77,45 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='nvim'
-# else
-#   export EDITOR='mnvim'
-# fi
+
+
+#Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='nvim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+#
+# # ex - archive extractor
+# # usage: ex <file>
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1     ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -106,6 +136,9 @@ alias sl='ls'
 alias batt='upower -i /org/freedesktop/UPower/devices/battery_BAT1'
 alias please='sudo $(fc -ln -1)'
 alias sdown='shutdown now'
+alias cp="cp -i"                          # confirm before overwriting something
+alias df='df -h'                          # human-readable sizes
+alias free='free -m'                      # show sizes in MB
 
 # Screen alias
 alias detcree='xrandr --auto'
@@ -120,7 +153,7 @@ alias uninst='sudo pacman -Rsn'
 alias delunu='sudo pacman -Rns $(pacman -Qtdq)'
 
 # Conf alias
-alias conf='nvim ~/.config/i3/config'
+alias conf='nvim ~/.i3/config'
 alias pconf='nvim ~/.config/polybar/config'
 alias dconf='nvim ~/.config/dunst/dunstrc'
 alias zconf='nvim ~/.zshrc'
