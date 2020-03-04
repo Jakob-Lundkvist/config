@@ -21,6 +21,7 @@ Plug 'majutsushi/tagbar'
           \ }
 ""Plug 'zchee/deoplete-clang'
 Plug 'shougo/deoplete.nvim'
+Plug 'davidhalter/jedi-vim'
 Plug 'tpope/vim-surround'
 Plug 'lervag/vimtex'
 Plug 'scrooloose/nerdtree'

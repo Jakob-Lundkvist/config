@@ -80,11 +80,6 @@ source $ZSH/oh-my-zsh.sh
 
 
 #Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
-else
-  export EDITOR='nvim'
-fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -139,6 +134,7 @@ alias sdown='shutdown now'
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
+alias updconf='cp ~/.i3/config ~/.*rc ~/config'
 
 # Screen alias
 alias detcree='xrandr --auto'
