@@ -1,4 +1,5 @@
-pacman -S - < packages.txt
+sudo pacman -Syu
+sudo pacman -S --needed - < packages.txt
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
